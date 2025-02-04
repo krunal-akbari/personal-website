@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: "Bitter", sans-sarif;
+}
+p{
+    font-family: "Open Sans", sans-sarif;
+}
+:root{
+    background: #fff;
+    font-family: "Open Sans", sans-serif;
+    margin: auto;
+}
+
+.navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.1rem;
+    list-style: none;
+    color:#6D6D6D;
+}
+
+.logo{
+    height: 3.5rem;
+    width: auto;
+}
+
+.button-cta{
+    padding: 12px 24px;
+    background: #FED800;
+    border-radius: 4px ;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    max-width: 80vw;
+    margin: auto;
+}
+.hamburger{
+    display: none;
+    font-size: 36px;
+}
+.comming-soon-image{
+    width: 100vw; height: auto;
+}
+
+footer{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;;
+    padding: 1.5rem 0 1.5rem  0;
+    max-width: 100vw;
+}
+.footer{
+    background: #efefef;
+}
+ul.footer-nav, ul.social{
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+}
+.seprater{
+    height: 2px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 12px;
+    background: #b9b9b9;
+}

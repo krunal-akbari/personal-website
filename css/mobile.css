@@ -1,0 +1,48 @@
+@media (max-width: 576px){
+
+    :root{
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .hamburger{
+        display: block;
+    }
+    nav, .button-cta{
+        display: none;
+    }
+
+    .comming-soon-image{
+        width: 100vw; height: auto;
+    }
+    .mobile-nav{
+        position: absolute;
+        width: 70vw;
+        height: 100vh;
+        display: block;
+        z-index: 999;
+        background: #efefef;
+    }
+
+    ul.mobile-navigation {
+        padding: 2rem 2rem;
+        list-style: none;
+        display: grid;
+        gap: 1rem;
+        font-size: 18px;
+        max-height: 6rem;
+    }
+    nav.mobile-nav {
+        display: flex;
+        justify-content: space-between;
+    }
+    .close.button {
+        text-align: right;
+        font-size: 24px;
+        padding: 12px;
+    }
+    footer {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
