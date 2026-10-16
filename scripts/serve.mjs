@@ -10,4 +10,4 @@ createServer(async (request, response) => {
     const content = await readFile(path);
     response.writeHead(200, { 'Content-Type': types[extname(path)] || 'application/octet-stream' }).end(content);
   } catch { response.writeHead(404).end('Not found'); }
-}).listen(Number(process.env.PORT || 5173), '0.0.0.0', () => console.log(`http://localhost:${process.env.PORT || 5173}`));
+}).listen(Number(process.env.PORT || 5173), process.env.HOST || '0.0.0.0', () => console.log(`http://${process.env.HOST || 'localhost'}:${process.env.PORT || 5173}`));
