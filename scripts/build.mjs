@@ -1,11 +1,12 @@
-import { mkdir, copyFile, cp, rm, readFile, access } from 'node:fs/promises';
+import { mkdir, copyFile, cp, rm, readFile, access, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
-const html = await readFile(resolve(root, 'index.html'), 'utf8');
-const assets = new Set([...html.matchAll(/(?:src=["']|url\(["']?)(work\/[^"')\s]+)/g)].map(match => match[1]));
+const pages = (await readdir(root)).filter(file => file.endsWith('.html'));
+const sources = await Promise.all([...pages, 'styles.css'].map(file => readFile(resolve(root, file), 'utf8')));
+const assets = new Set([...sources.join('\n').matchAll(/(?:src=["']|url\(["']?)(work\/[^"')\s]+)/g)].map(match => match[1]));
 for (const asset of assets) await access(resolve(root, asset));
 await rm(resolve(root, 'dist'), { recursive: true, force: true });
 await mkdir(resolve(root, 'dist'), { recursive: true });
-await copyFile(resolve(root, 'index.html'), resolve(root, 'dist/index.html'));
+for (const file of [...pages, 'styles.css']) await copyFile(resolve(root, file), resolve(root, 'dist', file));
 await cp(resolve(root, 'work'), resolve(root, 'dist/work'), { recursive: true });
-console.log(`Built dist/ with ${assets.size} verified image assets.`);
+console.log(`Built dist/ with ${pages.length} pages and ${assets.size} verified image assets.`);
